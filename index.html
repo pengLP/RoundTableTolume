@@ -65,13 +65,11 @@
             var syg = (wzj - nzj) / 2 / (Math.tan(angle * Math.PI / 180));
             var nyz = Math.PI * Math.pow((nzj / 2) , 2) * (height - syg);
             var wyz = Math.PI * Math.pow((wzj / 2) , 2) * height;
-            var yt = Math.PI * syg / (3 * Math.pow(nzj / 2 , 2)) + Math.pow(wzj / 2 , 2) + (nzj / 2) * (wzj / 2);
+
+            var yt = Math.PI * syg / 3 * (Math.pow(nzj / 2 , 2) + Math.pow(wzj / 2 , 2) + (nzj / 2) * (wzj / 2));
+
             var volum = wyz - nyz - yt;
             document.getElementById("ans").innerHTML =
-                "剩余高：" + syg
-                + "<br/>内圆柱： " + nyz
-                + "<br/>外圆柱： " + wyz
-                + "<br/>圆台：" + yt+
                 "<br />体积：" + volum;
         }
     </script>
