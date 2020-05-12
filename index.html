@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算有角度圆环体积</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body>
+    <div class="container">
+        <br>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3>
+                    计算有角度圆环体积
+                </h3>
+            </div>
+        </div>
+        <br>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                    <div class="form-group">
+                        <label for="nzj">内直径</label><input type="text" class="form-control" id="nzj" />
+                    </div>
+                    <div class="form-group">
+                        <label for="wzj">外直径</label><input type="text" class="form-control" id="wzj" />
+                    </div>
+                    <div class="form-group">
+                        <label for="height">高</label><input type="text" class="form-control" id="height" />
+                    </div>
+                    <div class="form-group">
+                        <label for="angle">角度</label><input type="text" class="form-control" id="angle" />
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="js()">计算</button>
+                <br><br>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            计算结果：
+                        </h3>
+                    </div>
+                    <div class="panel-body" id="ans">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="js/bootstrap.js"> </script>
+    <script>
+
+
+        function js() {
+            var nzj = document.getElementById("nzj").value;
+            var wzj = document.getElementById("wzj").value;
+            var height = document.getElementById("height").value;
+            var angle = document.getElementById("angle").value;
+
+            var syg = (wzj - nzj) / 2 / (Math.tan(angle * Math.PI / 180));
+            var nyz = Math.PI * Math.pow((nzj / 2) , 2) * (height - syg);
+            var wyz = Math.PI * Math.pow((wzj / 2) , 2) * height;
+            var yt = Math.PI * syg / (3 * Math.pow(nzj / 2 , 2)) + Math.pow(wzj / 2 , 2) + (nzj / 2) * (wzj / 2);
+            var volum = wyz - nyz - yt;
+            document.getElementById("ans").innerHTML =
+                "剩余高：" + syg
+                + "<br/>内圆柱： " + nyz
+                + "<br/>外圆柱： " + wyz
+                + "<br/>圆台：" + yt+
+                "<br />体积：" + volum;
+        }
+    </script>
+</body>
+</html>
